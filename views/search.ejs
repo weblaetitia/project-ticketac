@@ -1,13 +1,13 @@
 <%- include('header')%>
 
     <!-- main -->
-    <div class="container-fluid main">
+    <div class="container-fluid main offset-2">
 
       <div class="container">
         <div class="row offset-2" id="OneWay"> <h1> One-Way Ticket :  </h1> </div>
-        <div class="row d-flex justify-content-center">
+        <div class="row">
 
-          <div class="col-12 col-md-6">
+          <div class="col-12">
             <!-- Formulaire de saisie ville -->
             <form>
                 <div class="form-row align-items-center">
@@ -23,10 +23,13 @@
                     </div>
                   </div>
 
-                  <div class="col-auto">
-                    <div class="form-check mb-2">
-                    </div>
+                  <!-- Calendrier -->
+                  
+                  <div class ='col-auto mb-2'>
+                      <input type="date" class="form-control" id="start" name="trip-start" value="2019-11-22" min="2019-01-01" max="2019-12-31">
                   </div>
+                  
+                    <!-- Bouton-->
                   <div class="col-auto">
                     <button type="submit" class="btn btn-danger mb-2">Go</button>
                   </div>
@@ -36,6 +39,8 @@
         </div>
     </div>
 </div>
+
+
 <!-- Image-->
     <div class= 'offset-5 col-2'> 
         <img class ='img-fluid' id='img' src="/images/landmark.png">
