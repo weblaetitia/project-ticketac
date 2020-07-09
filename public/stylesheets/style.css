@@ -12,3 +12,13 @@ body {
 .blue-bg {
   background-color: rgb(60,163,218);
 }
+
+#OneWay {
+margin-bottom: 10px;
+color: aliceblue;
+
+}
+
+#img{ 
+  margin-top: 50px;
+}
