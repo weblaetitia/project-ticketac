@@ -16,4 +16,12 @@ router.get('/cart', function(req, res, next) {
   res.render('cart');
 });
 
+/* GET homepage */
+router.get('/home', function(req, res, next) {
+  res.render('home', { title: 'Express' });
+});
+
+
+
 module.exports = router;
+
