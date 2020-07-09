@@ -16,9 +16,9 @@ router.get('/cart', function(req, res, next) {
   res.render('cart');
 });
 
-/* GET homepage */
-router.get('/home', function(req, res, next) {
-  res.render('home', { title: 'Express' });
+/* GET searchpage */
+router.get('/search', function(req, res, next) {
+  res.render('search', { title: 'Express' });
 });
 
 
