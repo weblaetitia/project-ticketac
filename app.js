@@ -13,6 +13,8 @@ var session = require('express-session')
 
 require('dotenv').config()
 
+// routers
+var trainsRouter = require('./routes/trains');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,11 +26,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// router familys
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/trains', trainsRouter)
 
 // require models
 require('./models/dbconnect')
+
 
 // express-session
 app.use(session({
@@ -53,5 +58,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// My functions
+app.locals.prettyDate = function(date) {
+  var newDate = new Date(date)
+  return myDate = newDate.getDate() + '/' + newDate.getMonth()+ '/' + newDate.getFullYear()
+}
+
 
 module.exports = app;

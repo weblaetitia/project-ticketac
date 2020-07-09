@@ -4,29 +4,27 @@
     <div class="container-fluid main offset-2">
 
       <div class="container">
-        <div class="row offset-2" id="OneWay"> <h1> One-Way Ticket :  </h1> </div>
+        <div class="row offset-2" id="OneWay"> <h1> One-Way Ticket:  </h1> </div>
         <div class="row">
 
           <div class="col-12">
             <!-- Formulaire de saisie ville -->
-            <form>
+            <form action="/trains/results" method="post">
                 <div class="form-row align-items-center">
                   <div class="col-auto">
-                    <label class="sr-only" for="inlineFormInput">FromCity</label>
-                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="From : Paris, Marseille...">
+                    <input id="cityfrom" name="cityfrom" type="text" class="form-control mb-2" placeholder="From: Paris, Marseille..." required>
                   </div>
 
                   <div class="col-auto">
-                    <label class="sr-only" for="inlineFormInputGroup">ToCity</label>
                     <div class="input-group mb-2">
-                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="To : Lyon, Lille...">
+                      <input id="cityto" name="cityto" type="text" class="form-control" placeholder="To: Lyon, Lille..." required>
                     </div>
                   </div>
 
                   <!-- Calendrier -->
                   
                   <div class ='col-auto mb-2'>
-                      <input type="date" class="form-control" id="start" name="trip-start" value="2019-11-22" min="2019-01-01" max="2019-12-31">
+                      <input id="date" name="date" type="date" class="form-control" min="2018-11-20" max="2018-11-24" required>
                   </div>
                   
                     <!-- Bouton-->
