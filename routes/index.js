@@ -21,6 +21,11 @@ router.get('/home', function(req, res, next) {
   res.render('home', { title: 'Express' });
 });
 
+/* GET no rain page */
+router.get('/notrain', function(req, res, next) {
+  res.render('notrain');
+});
+
 
 
 module.exports = router;
