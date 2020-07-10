@@ -7,10 +7,7 @@ var mongoose = require('mongoose');
 //   res.send('respond with a resource');
 // });
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+
 
 
 

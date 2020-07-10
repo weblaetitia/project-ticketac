@@ -13,6 +13,16 @@ var session = require('express-session')
 
 require('dotenv').config()
 
+
+// express-session
+  app.use(session({
+  secret: process.env.SESSION_KEY,
+  resave: false,
+  saveUninitialized: false,
+  // cookie: { secure: true }
+}))
+
+
 // routers
 var trainsRouter = require('./routes/trains');
 
@@ -38,13 +48,6 @@ app.use('/trains', trainsRouter)
 require('./models/dbconnect')
 
 
-// express-session
-app.use(session({
-  secret: process.env.SESSION_KEY,
-  resave: false,
-  saveUninitialized: false,
-  // cookie: { secure: true }
-}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
