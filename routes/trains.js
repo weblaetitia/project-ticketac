@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var JourneyModel = require('../models/journeys')
+var JourneyModel = require('../models/journeys');
+const UserModel = require('../models/users');
+const { updateOne } = require('../models/journeys');
 
 
 /* GET home page. */
@@ -21,28 +23,33 @@ router.post('/results', async function(req, res, next) {
         departure: req.body.cityfrom,
         arrival: req.body.cityto,
         date: queryIsoDate
-      })
-    console.log(journeys)  
-    
+      })    
     if (journeys.length == 0) {
         console.log('vide')
         res.render('notrain')
     } else {
-        console.log('pas vide')
         res.render('results', {journeys:journeys});
     }
   });
 
-/* GET mytickets page. */
-router.get('/cart', function(req, res, next) {
-  res.render('cart');
+/* GET cart page. */
+router.get('/cart', async function(req, res, next) {
+  var cart = req.session.cart = []
+  cart.push({
+    departure: req.query.departure,
+    arrival: req.query.arrival,
+    date: req.query.date,
+    departureTime: req.query.departureTime,
+    price: req.query.price
+  })
+  res.render('cart', {cart:cart});
 });
 
 
 
 /* GET my trips page */
-router.get('/mytrips', function(req, res, next) {
-  res.render('mytrips', { title: 'Express' });
+router.get('/mytrips', async function(req, res, next) {
+  
 });
 
 /* GET no rain page */

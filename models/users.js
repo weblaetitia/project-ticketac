@@ -1,6 +1,13 @@
 var mongoose = require('mongoose');
 
-
+ /* Schéma trips*/ 
+ var TripsSchema = mongoose.Schema({
+    departure: String,
+    arrival: String,
+    date: Date,
+    departureTime: Number,
+    price: Number
+})
 
 /* Schéma users */
 var userSchema = mongoose.Schema({
@@ -8,14 +15,9 @@ var userSchema = mongoose.Schema({
     name: String,
     email: String,
     password: String,
+    trips: [TripsSchema]
 })
- /* Schéma trips*/ 
-var trips = mongoose.Schema({
-    date: Date,
-    journey: String,
-    departure_time: Number,
-    price: Number
-})
+
 
 /* Models*/ 
 
