@@ -3,8 +3,6 @@ var router = express.Router();
 
 var JourneyModel = require('../models/journeys');
 const UserModel = require('../models/users');
-const { updateOne } = require('../models/journeys');
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -50,20 +48,17 @@ router.get('/confirm', async function(req, res) {
   var myUser = await UserModel.findOne({
     _id:req.session.user.id
   }) 
-  console.log('ok 2')
-  console.log(req.session.cart)
 
   req.session.cart.forEach(trip => {
     myUser.trips.push({
       departure: trip.departure,
       arrival: trip.arrival,
       date: trip.date,
-      departureTime: trip.departureTime,
+      departureTime: trip.departuretime,
       price: trip.price
     })
   })
   await myUser.save()
-  console.log('ok 4 save')
   res.redirect('/')
 })
 
