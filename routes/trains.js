@@ -19,7 +19,7 @@ router.post('/results', async function(req, res, next) {
         date: queryIsoDate
       })    
     if (journeys.length == 0) {
-        console.log('vide')
+        // console.log('vide')
         res.render('notrain')
     } else {
         res.render('results', {journeys:journeys});
@@ -28,7 +28,6 @@ router.post('/results', async function(req, res, next) {
 
 /* GET cart page. */
 router.get('/cart', function(req, res, next) {
-  console.log(req.session.cart)
   if (req.session.cart === undefined) {
     req.session.cart = []
   } 
@@ -39,12 +38,13 @@ router.get('/cart', function(req, res, next) {
     departureTime: req.query.departuretime,
     price: req.query.price
   })
+  console.log(req.session.cart)
   res.render('cart', {cart:req.session.cart});
 });
 
 /* GET confirm page */
 router.get('/confirm', async function(req, res) {
-  console.log(req.session)
+  // console.log(req.session)
   var myUser = await UserModel.findOne({
     _id:req.session.user.id
   }) 
@@ -54,19 +54,15 @@ router.get('/confirm', async function(req, res) {
       departure: trip.departure,
       arrival: trip.arrival,
       date: trip.date,
-      departureTime: trip.departuretime,
+      departureTime: trip.departureTime,
       price: trip.price
     })
   })
   await myUser.save()
+
   res.redirect('/')
 })
 
-/* GET my trips page */
-router.get('/mytrips', async function(req, res, next) {
-  
-  res.render('mytrips');
-});
 
 /* GET no rain page */
 router.get('/notrain', function(req, res, next) {
