@@ -16,6 +16,9 @@ require('dotenv').config()
 // routers
 var trainsRouter = require('./routes/trains');
 
+// routers
+var usersRouter = require('./routes/users');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
