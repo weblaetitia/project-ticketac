@@ -63,8 +63,7 @@ req.session.user = {
 }
 res.redirect('/search');
 } else { 
-
-res.render('index');
+  res.render('index', {error2: 'User\'s allready exists '});
 }
 });
 
@@ -83,7 +82,7 @@ router.post('/signin',  async function(req,res,next){
     }
     res.redirect('/search')
   } else {
-     res.render('index')
+     res.render('index', {error: 'Invalid email or password'})
    }
   })
 
