@@ -11,8 +11,9 @@ var app = express();
 
 var session = require('express-session')
 
-require('dotenv').config()
-
+if(!process.env.DB_INFO) {
+  require('dotenv').config()
+}
 // express-session
   app.use(session({
   secret: process.env.SESSION_KEY,
