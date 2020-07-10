@@ -76,12 +76,12 @@ if (!searchUser){
 
 var newUserSave = await newUser.save();
 console.log(newUserSave);
-
-// req.session.user = {
-//   name : newUserSave.name,
-//   id: newUserSave._id,
-// }
 console.log(req.session)
+
+req.session.user = {
+  name : newUserSave.name,
+  id: newUserSave._id,
+}
 res.redirect('/search');
 } else { 
 
