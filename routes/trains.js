@@ -53,13 +53,17 @@ router.get('/confirm', async function(req, res) {
   console.log('ok 2')
   console.log(req.session.cart)
 
-  myUser.trips.push(req.session.cart)
-  console.log('ok 3 pousse')
-  console.log(myUser)
-
+  req.session.cart.forEach(trip => {
+    myUser.trips.push({
+      departure: trip.departure,
+      arrival: trip.arrival,
+      date: trip.date,
+      departureTime: trip.departureTime,
+      price: trip.price
+    })
+  })
   await myUser.save()
   console.log('ok 4 save')
-
   res.redirect('/')
 })
 
