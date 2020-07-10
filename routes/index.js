@@ -9,28 +9,27 @@ var UserModel = require('../models/users')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index');
+  if (req.session.cart) {
+    req.session.cart = ''
+  }
+  if (req.session.user) {
+    req.session.user = ''
+  }
 });
 
-/* GET home page. */
-router.get('/available', function(req, res, next) {
 
-  res.render('available');
-});
 
-/* GET mytickets page. */
-router.get('/cart', function(req, res, next) {
-  res.render('cart');
-});
+
 
 /* GET searchpage */
 router.get('/search', function(req, res, next) {
-  res.render('search', { title: 'Express' });
+  res.render('search');
 });
 
 /* GET my trips page */
 router.get('/mytrips', function(req, res, next) {
-  res.render('mytrips', { title: 'Express' });
+  res.render('mytrips');
 });
 
 /* GET no rain page */
