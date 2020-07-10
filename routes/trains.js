@@ -33,23 +33,36 @@ router.post('/results', async function(req, res, next) {
   });
 
 /* GET cart page. */
-router.get('/cart', async function(req, res, next) {
-  var cart = req.session.cart = []
-  cart.push({
+router.get('/cart', function(req, res, next) {
+  console.log(req.session.cart)
+  if (req.session.cart === undefined) {
+    req.session.cart = []
+    console.log(req.session.cart)
+  } 
+  req.session.cart.push({
     departure: req.query.departure,
     arrival: req.query.arrival,
     date: req.query.date,
     departureTime: req.query.departureTime,
     price: req.query.price
   })
-  res.render('cart', {cart:cart});
+  res.render('cart', {cart:req.session.cart});
 });
 
-
+/* GET confirm page */
+router.get('/confirm', async function() {
+  var myUser = await UserModel.findOne({
+    _id:req.session.user.id
+  }) 
+  myUser.trips.push(req.session.cart)
+  var myUser = await myUser.save()
+  res.redirect('/')
+})
 
 /* GET my trips page */
 router.get('/mytrips', async function(req, res, next) {
   
+  res.render('mytrips');
 });
 
 /* GET no rain page */
