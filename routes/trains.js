@@ -60,7 +60,7 @@ router.get('/confirm', async function(req, res) {
   })
   await myUser.save()
 
-  res.redirect('/')
+  res.redirect('/lasttrips')
 })
 
 
