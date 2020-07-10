@@ -13,11 +13,7 @@ router.get('/', function(req, res, next) {
 
 /* POST search page */
 router.post('/results', async function(req, res, next) {
-    console.log(req.body.cityfrom)
-    console.log(req.body.cityto)
-    console.log(req.body.date)
     var queryIsoDate = new Date(req.body.date);
-    console.log(queryIsoDate)
 
     var journeys = await JourneyModel.find({
         departure: req.body.cityfrom,
@@ -37,7 +33,6 @@ router.get('/cart', function(req, res, next) {
   console.log(req.session.cart)
   if (req.session.cart === undefined) {
     req.session.cart = []
-    console.log(req.session.cart)
   } 
   req.session.cart.push({
     departure: req.query.departure,
@@ -50,12 +45,21 @@ router.get('/cart', function(req, res, next) {
 });
 
 /* GET confirm page */
-router.get('/confirm', async function() {
+router.get('/confirm', async function(req, res) {
+  console.log(req.session)
   var myUser = await UserModel.findOne({
     _id:req.session.user.id
   }) 
+  console.log('ok 2')
+  console.log(req.session.cart)
+
   myUser.trips.push(req.session.cart)
-  var myUser = await myUser.save()
+  console.log('ok 3 pousse')
+  console.log(myUser)
+
+  await myUser.save()
+  console.log('ok 4 save')
+
   res.redirect('/')
 })
 
