@@ -7,25 +7,33 @@
             <p class="text-white h4 text-center">Sign-in</p>
             <form action="/signin" method="post">
               <div class="form-group">
-                <input type="email" name='email' value='' class="form-control mb-3" id="signin-email" aria-describedby="emailHelp" placeholder="email">
-                <input type="password"  name='password' value='' class="form-control mb-3" id="signin-password" placeholder="Password">
+                <input type="email" name='email' value='' class="form-control mb-3" id="signin-email" aria-describedby="emailHelp" placeholder="email" required>
+                <input type="password"  name='password' value='' class="form-control mb-3" id="signin-password" placeholder="Password" required>
               </div>
               <button type="submit" class="btn btn-danger">Confirm</button>
             </form>
+            <% if (locals.error != undefined) { %>
+              <div class="alert alert-danger mt-3" role="alert">
+                <%= error %> 
+              </div>
+            <% } %>  
           </div>
           <div class="col-12 col-md-6">
             <p class="text-white h4 text-center">Sign-up</p>
             <form action="/signup" method="post">
               <div class="form-group">
-                <input type="text" name='firstname' value='' class="form-control mb-3" id="signup-firstName" placeholder="Firstname">
-                <input type="text" name='name' value='' class="form-control mb-3" id="signup-name" placeholder="Name">
-                <input type="email" name='email' value=''  class="form-control mb-3" id="signup-email" placeholder="Email">
-                <input type="password" name='password' value='' class="form-control mb-3" id="signup-password" placeholder="Password">
+                <input type="text" name='firstname' value='' class="form-control mb-3" id="signup-firstName" placeholder="Firstname" required>
+                <input type="text" name='name' value='' class="form-control mb-3" id="signup-name" placeholder="Name" required>
+                <input type="email" name='email' value=''  class="form-control mb-3" id="signup-email" placeholder="Email" required>
+                <input type="password" name='password' value='' class="form-control mb-3" id="signup-password" placeholder="Password" required>
               </div>
               <button type="submit" class="btn btn-danger">Confirm</button>
-
-              
             </form>
+            <% if (locals.error2 != undefined) { %>
+              <div class="alert alert-danger mt-3" role="alert">
+                <%= error2 %> 
+              </div>
+            <% } %> 
           </div>
         </div>
 
