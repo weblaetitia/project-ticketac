@@ -21,7 +21,7 @@ router.post('/results', async function(req, res, next) {
         date: queryIsoDate
       })    
     if (journeys.length == 0) {
-        console.log('vide')
+        // console.log('vide')
         res.render('notrain')
     } else {
         res.render('results', {journeys:journeys});
@@ -30,7 +30,7 @@ router.post('/results', async function(req, res, next) {
 
 /* GET cart page. */
 router.get('/cart', function(req, res, next) {
-  console.log(req.session.cart)
+  // console.log(req.session.cart)
   if (req.session.cart === undefined) {
     req.session.cart = []
   } 
@@ -46,12 +46,12 @@ router.get('/cart', function(req, res, next) {
 
 /* GET confirm page */
 router.get('/confirm', async function(req, res) {
-  console.log(req.session)
+  // console.log(req.session)
   var myUser = await UserModel.findOne({
     _id:req.session.user.id
   }) 
-  console.log('ok 2')
-  console.log(req.session.cart)
+  // console.log('ok 2')
+  // console.log(req.session.cart)
 
   req.session.cart.forEach(trip => {
     myUser.trips.push({
@@ -63,15 +63,15 @@ router.get('/confirm', async function(req, res) {
     })
   })
   await myUser.save()
-  console.log('ok 4 save')
+  // console.log('ok 4 save')
   res.redirect('/')
 })
 
 /* GET my trips page */
-router.get('/mytrips', async function(req, res, next) {
+// router.get('/mytrips', async function(req, res, next) {
   
-  res.render('mytrips');
-});
+//   res.render('mytrips');
+// });
 
 /* GET no rain page */
 router.get('/notrain', function(req, res, next) {

@@ -28,9 +28,9 @@ router.get('/search', function(req, res, next) {
 });
 
 /* GET my trips page */
-router.get('/mytrips', function(req, res, next) {
-  res.render('mytrips');
-});
+// router.get('/mytrips', function(req, res, next) {
+//   res.render('mytrips');
+// });
 
 /* GET no rain page */
 router.get('/notrain', function(req, res, next) {
@@ -57,8 +57,8 @@ if (!searchUser){
   var newUserSave = await newUser.save();
 
 var newUserSave = await newUser.save();
-console.log(newUserSave);
-console.log(req.session)
+// console.log(newUserSave);
+// console.log(req.session)
 
 req.session.user = {
   name : newUserSave.name,
