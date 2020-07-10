@@ -8,8 +8,8 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    
-    <header>
+    <div class="cover-container d-flex w-100 h-100 mx-auto flex-column">
+    <header class="masthead mb-auto">
       <!-- NAV -->
       <nav class="navbar navbar-expand navbar-light bg-white">
         <div class="container">
@@ -18,14 +18,14 @@
             Ticketac
           </a>
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link text-danger" href="/">Log-in</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="/trains/search">Buy tickets</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/lasttrips">My last trips</a>
+            </li>
+            <li class="nav-item active">
+              <a class="btn btn-danger nav-link text-light px-2" href="/">Log-in</a>
             </li>
           </ul>
         </div>
