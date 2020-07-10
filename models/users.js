@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
     departure: String,
     arrival: String,
     date: Date,
-    departureTime: Number,
+    departureTime: String,
     price: Number
 })
 

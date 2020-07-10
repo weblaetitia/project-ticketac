@@ -24,16 +24,20 @@ router.get('/search', function(req, res, next) {
   res.render('search');
 });
 
-/* GET my trips page */
-router.get('/mytrips', function(req, res, next) {
-  res.render('mytrips');
-});
+/* Mytrips page*/ 
+router.get('/lasttrips', async function(req,res,next) { 
+  console.log(req.session.user)
+  var userTrips = await UserModel.findById(req.session.user.id)
+  console.log(userTrips)
 
-/* GET no rain page */
+  res.render('mytrips', {trips:userTrips.trips});
+  })
+
+
+/* GET no train page */
 router.get('/notrain', function(req, res, next) {
   res.render('notrain');
 });
-
 
   
 /* Route Sign-up*/
@@ -54,8 +58,8 @@ if (!searchUser){
   var newUserSave = await newUser.save();
 
 var newUserSave = await newUser.save();
-console.log(newUserSave);
-console.log(req.session)
+// console.log(newUserSave);
+// console.log(req.session)
 
 req.session.user = {
   name : newUserSave.name,
