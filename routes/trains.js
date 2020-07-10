@@ -38,7 +38,7 @@ router.get('/cart', function(req, res, next) {
     departure: req.query.departure,
     arrival: req.query.arrival,
     date: req.query.date,
-    departureTime: req.query.departureTime,
+    departureTime: req.query.departuretime,
     price: req.query.price
   })
   res.render('cart', {cart:req.session.cart});
