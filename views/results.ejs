@@ -5,39 +5,19 @@
       <div class="container">
         <div class="row">
           <div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
-            <p class="text-white h4 text-center">Tickets available on <%= prettyDate(journey[0].date)%>:</p>
+            <p class="text-white h4 text-center">Tickets available on <%= prettyDate(journeys[0].date)%>:</p>
 
             <!-- boucle card -->
+            <% journeys.forEach(journey => { %>
             <div class="card d-flex mb-2 flex-sm-row justify-content-between align-items-center p-3">
-                <p class="my-2 my-sm-0 font-weight-bold">Paris/Lille</p>
-                <p class="small mb-0">Train departure at: 15:00</p>
+                <p class="my-2 my-sm-0 font-weight-bold"><%= journey.departure %>/<%= journey.arrival %></p>
+                <p class="small mb-0">Train departure at: <%= journey.departureTime %></p>
                 <div class="mt-2 my-sm-0">
-                    <span class="font-weight-bold mr-2">€93</span>
-                    <a href="#" class="btn btn-danger">OK</a>
+                    <span class="font-weight-bold mr-2">€<%= journey.price %></span>
+                    <a href="/trains/cart?departure=<%= journey.departure %>&arrival=<%= journey.arrival %>&date=<%= journey.date %>&departuretime=<%= journey.departureTime %>&price=<%= journey.departure %>" class="btn btn-danger">OK</a>
                 </div>
             </div>
-            <!-- boucle card -->
-
-            <!-- boucle card -->
-            <div class="card d-flex mb-2 flex-sm-row justify-content-between align-items-center p-3">
-                <p class="my-2 my-sm-0 font-weight-bold">Paris/Lille</p>
-                <p class="small mb-0">Train departure at: 17:00</p>
-                <div class="mt-2 my-sm-0">
-                    <span class="font-weight-bold mr-2">€99</span>
-                    <a href="#" class="btn btn-danger">OK</a>
-                </div>
-            </div>
-            <!-- boucle card -->
-
-            <!-- boucle card -->
-            <div class="card d-flex mb-2 flex-sm-row justify-content-between align-items-center p-3">
-                <p class="my-2 my-sm-0 font-weight-bold">Paris/Lille</p>
-                <p class="small mb-0">Train departure at: 22:00</p>
-                <div class="mt-2 my-sm-0">
-                    <span class="font-weight-bold mr-2">€78</span>
-                    <a href="#" class="btn btn-danger">OK</a>
-                </div>
-            </div>
+            <% }) %>
             <!-- boucle card -->
 
           </div>

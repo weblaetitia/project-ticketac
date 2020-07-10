@@ -17,19 +17,19 @@ router.post('/results', async function(req, res, next) {
     var queryIsoDate = new Date(req.body.date);
     console.log(queryIsoDate)
 
-    var journey = await JourneyModel.find({
+    var journeys = await JourneyModel.find({
         departure: req.body.cityfrom,
         arrival: req.body.cityto,
         date: queryIsoDate
       })
-    console.log(journey)  
+    console.log(journeys)  
     
-    if (journey.length == 0) {
+    if (journeys.length == 0) {
         console.log('vide')
         res.render('notrain')
     } else {
         console.log('pas vide')
-        res.render('results', {journey:journey});
+        res.render('results', {journeys:journeys});
     }
   });
 
