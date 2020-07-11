@@ -75,9 +75,7 @@ router.post('/signin',  async function(req,res,next){
         name : searchUser.name,
         id: searchUser._id
       }
-      console.log('ok search user')
-      console.log(req.session.user)
-      res.redirect('/trains/search')
+      res.redirect('/search')
     } else {
       // if user+password doesnot exist
       res.render('index', {error: 'Invalid email or password'})
@@ -87,5 +85,14 @@ router.post('/signin',  async function(req,res,next){
     res.render('index', {error: 'All fields must be completed'})
   }
 })
+
+/* GET searchpage */
+router.get('/search', function(req, res, next) {
+  if (req.session.user)  {
+    res.render('search');
+  } else {
+    res.redirect('/')
+  }
+});
 
 module.exports = router;
