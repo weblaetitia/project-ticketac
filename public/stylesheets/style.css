@@ -4,10 +4,6 @@ html, body {
   background: linear-gradient(50deg, rgba(60,141,218,1) 0%, rgba(199,247,255,1) 100%);
 }
 
-.main {
-  display: flex;
-  align-items: center;
-}
 .blue-bg {
   background-color: rgb(60,163,218);
 }
@@ -18,6 +14,7 @@ color: aliceblue;
 
 }
 
-#img{ 
-  margin-top: 50px;
+.landmark {
+  height: 200px;
+  width: auto;
 }
