@@ -43,6 +43,8 @@ router.get('/notrain', function(req, res, next) {
 /* Route Sign-up*/
 router.post('/signup', async function(req,res,next){
 
+  // verif que tous les champs sont remplis
+
   var searchUser = await UserModel.findOne({
     email: req.body.email
   })
@@ -55,9 +57,8 @@ if (!searchUser){
     email: req.body.email,
     password: req.body.password,
   })
-  var newUserSave = await newUser.save();
-
 var newUserSave = await newUser.save();
+
 // console.log(newUserSave);
 // console.log(req.session)
 
@@ -73,6 +74,8 @@ res.redirect('/search');
 
  /* Route Post Sign In */ 
 router.post('/signin',  async function(req,res,next){
+
+  // ajouter une verif de tous les champs
 
   var searchUser = await UserModel.findOne({
     email: req.body.email,
