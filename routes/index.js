@@ -75,23 +75,27 @@ router.post('/signup', async function(req,res,next){
 
  /* Route Post Sign In */ 
 router.post('/signin',  async function(req,res,next){
-
-  // ajouter une verif de tous les champs
-
-  var searchUser = await UserModel.findOne({
-    email: req.body.email,
-    password: req.body.password
-    })
-    
-   if(searchUser!= null){
-    req.session.user = {
-      name : searchUser.name,
-      id: searchUser._id,
-    }
+  if (req.body.email && req.body.password) {
+    // ok all filds ar completed
+    var searchUser = await UserModel.findOne({
+      email: req.body.email,
+      password: req.body.password
+      })
+    if(searchUser!= null){
+      // if user+password exist
+      req.session.user = {
+        name : searchUser.name,
+        id: searchUser._id,
+      }
     res.redirect('/search')
+    } else {
+      // if user+password doesnot exist
+      res.render('index', {error: 'Invalid email or password'})
+    }
   } else {
-     res.render('index', {error: 'Invalid email or password'})
-   }
-  })
+    // not all fields are completed
+    res.render('index', {error: 'All fields must be completed'})
+  }
+})
 
 module.exports = router;
