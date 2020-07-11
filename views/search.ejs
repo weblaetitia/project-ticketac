@@ -1,48 +1,43 @@
 <%- include('header')%>
 
     <!-- main -->
-    <div class="container-fluid main offset-2">
+    <div class="container-fluid">
 
       <div class="container">
-        <div class="row offset-2" id="OneWay"> <h1> One-Way Ticket:  </h1> </div>
         <div class="row">
-
           <div class="col-12">
-            <!-- Formulaire de saisie ville -->
-            <form action="/trains/results" method="post">
-                <div class="form-row align-items-center">
-                  <div class="col-auto">
-                    <input id="cityfrom" name="cityfrom" type="text" class="form-control mb-2" placeholder="From: Paris, Marseille..." required>
-                  </div>
-
-                  <div class="col-auto">
-                    <div class="input-group mb-2">
-                      <input id="cityto" name="cityto" type="text" class="form-control" placeholder="To: Lyon, Lille..." required>
-                    </div>
-                  </div>
-
-                  <!-- Calendrier -->
-                  
-                  <div class ='col-auto mb-2'>
-                      <input id="date" name="date" type="date" class="form-control" min="2018-11-20" max="2018-11-24" required>
-                  </div>
-                  
-                    <!-- Bouton-->
-                  <div class="col-auto">
-                    <button type="submit" class="btn btn-danger mb-2">Go</button>
-                  </div>
-                </div>
-              </form>
-            </div>
+            <h1 class="text-white h4 mb-3">One-Way Ticket:</h1>
+          </div> 
         </div>
+        <!-- Formulaire de saisie ville -->
+          <form action="/trains/results" method="post">
+            <div class="form-row">
+              <div class="col-md-4 form-group">
+                <input id="cityfrom" name="cityfrom" type="text" class="form-control mb-2" placeholder="From: Paris, Marseille..." required>
+              </div>
+              <div class="col-md-4 form-group">
+                  <input id="cityto" name="cityto" type="text" class="form-control mb-2" placeholder="To: Lyon, Lille..." required>
+              </div>
+              <!-- Calendrier -->
+              <div class ='col-md-3 form-group'>
+                  <input id="date" name="date" type="date" class="form-control mb-2" min="2018-11-20" max="2018-11-24" required>
+              </div>
+                <!-- Bouton-->
+              <div class="col-md-1 form-group">
+                <button type="submit" class="btn btn-danger mb-2">Go</button>
+              </div>
+            </div>
+        </form>
+        <div class="row">
+          <div class="col-12">
+            <img class="mx-auto d-block landmark" src="/images/landmark.png" alt="Landmark">
+          </div>
+        </div>
+      </div>
     </div>
-</div>
 
 
-<!-- Image-->
-    <div class= 'offset-5 col-2'> 
-        <img class ='img-fluid' id='img' src="/images/landmark.png">
-    </div>
+
     <!-- end main -->
 
     <%- include('footer')%>
