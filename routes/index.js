@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 
-
-
-/* import model User*/
+// import model User
 var UserModel = require('../models/users')
+
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,26 +18,15 @@ router.get('/', function(req, res, next) {
   }
 });
 
-
-/* GET searchpage */
-router.get('/search', function(req, res, next) {
-  res.render('search');
-});
-
 /* Mytrips page*/ 
 router.get('/lasttrips', async function(req,res,next) { 
-  console.log(req.session.user)
-  var userTrips = await UserModel.findById(req.session.user.id)
-  console.log(userTrips)
-
-  res.render('mytrips', {trips:userTrips.trips});
-  })
-
-
-/* GET no train page */
-router.get('/notrain', function(req, res, next) {
-  res.render('notrain');
-});
+  if (req.session.user) {
+    var userTrips = await UserModel.findById(req.session.user.id)
+    res.render('mytrips', {trips:userTrips.trips})
+  } else {
+    res.redirect('/')
+  }
+})
 
   
 /* Route Sign-up*/
@@ -61,7 +50,7 @@ router.post('/signup', async function(req,res,next){
       name : newUserSave.name,
       id: newUserSave._id,
     }
-    res.redirect('/search');
+    res.redirect('/trains/search');
     } else { 
       // user exist
       res.render('index', {error2: 'User allready exists '});
@@ -70,7 +59,6 @@ router.post('/signup', async function(req,res,next){
     // Wrong all inputs are not completed
     res.render('index', {error2: 'All fields must be completed'});
   }
-
 })
 
  /* Route Post Sign In */ 
@@ -81,13 +69,15 @@ router.post('/signin',  async function(req,res,next){
       email: req.body.email,
       password: req.body.password
       })
-    if(searchUser!= null){
+    if(searchUser!= null) {
       // if user+password exist
       req.session.user = {
         name : searchUser.name,
-        id: searchUser._id,
+        id: searchUser._id
       }
-    res.redirect('/search')
+      console.log('ok search user')
+      console.log(req.session.user)
+      res.redirect('/trains/search')
     } else {
       // if user+password doesnot exist
       res.render('index', {error: 'Invalid email or password'})
