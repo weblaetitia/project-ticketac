@@ -4,11 +4,6 @@ var router = express.Router();
 var JourneyModel = require('../models/journeys');
 const UserModel = require('../models/users');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('search');
-});
-
 /* POST search page */
 router.post('/results', async function(req, res, next) {
     var queryIsoDate = new Date(req.body.date);
