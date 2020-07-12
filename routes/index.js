@@ -50,7 +50,7 @@ router.post('/signup', async function(req,res,next){
       name : newUserSave.name,
       id: newUserSave._id,
     }
-    res.redirect('/trains/search');
+    res.redirect('/search');
     } else { 
       // user exist
       res.render('index', {error2: 'User allready exists '});
